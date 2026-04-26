@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXHUB</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+        <div class="floating-shape shape-6"></div>
+    </div>
+
+    <!-- ЭКРАН ВХОДА -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-logo">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h1 class="glitch-title" data-text="NEXHUB">NEXHUB</h1>
+                <p class="auth-subtitle">Кибер-пространство колледжа</p>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-role="student">
+                        <i class="fas fa-user-graduate"></i> Студент
+                    </button>
+                    <button class="auth-tab" data-role="admin">
+                        <i class="fas fa-crown"></i> Администратор
+                    </button>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="loginInput" placeholder="Логин">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="passwordInput" placeholder="Пароль">
+                    </div>
+                    <button type="submit" class="btn-login">
+                        <span>Войти</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ ИНТЕРФЕЙС -->
+    <div id="mainApp" class="main-app hidden">
+        <header class="top-bar">
+            <div class="logo-area">
+                <i class="fas fa-gem"></i>
+                <span class="glitch-text" data-text="NEXHUB">NEXHUB</span>
+            </div>
+            <div class="user-area">
+                <div class="user-badge">
+                    <div class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="user-info-header">
+                        <span class="user-name" id="userName">Студент</span>
+                        <span class="user-role" id="userRole">Группа</span>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="logout-header">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="app-container">
+            <aside class="sidebar-new">
+                <nav class="nav-menu">
+                    <!-- СТУДЕНЧЕСКОЕ МЕНЮ -->
+                    <div class="nav-section student-only">
+                        <div class="nav-section-title">Основное</div>
+                        <a href="#" class="nav-link active" data-page="schedule">
+                            <i class="fas fa-calendar-week"></i>
+                            <span>Расписание</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="events">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>События</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="shop">
+                            <i class="fas fa-store"></i>
+                            <span>Магазин</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="promo">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>Промокоды</span>
+                        </a>
+                        
+                        <div class="nav-section-title" style="margin-top: 16px;">Активность</div>
+                        <a href="#" class="nav-link" data-page="history">
+                            <i class="fas fa-history"></i>
+                            <span>История</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="leaderboard">
+                            <i class="fas fa-trophy"></i>
+                            <span>Рейтинг</span>
+                        </a>
+                        
+                        <div class="nav-section-title" style="margin-top: 16px;">Общение</div>
+                        <a href="#" class="nav-link" data-page="chat">
+                            <i class="fas fa-headset"></i>
+                            <span>Поддержка</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="common-chat">
+                            <i class="fas fa-globe"></i>
+                            <span>Общий чат</span>
+                        </a>
+                    </div>
+                    
+                    <!-- АДМИНСКОЕ МЕНЮ -->
+                    <div class="nav-section admin-only hidden">
+                        <div class="nav-section-title">Управление</div>
+                        <a href="#" class="nav-link active" data-page="students">
+                            <i class="fas fa-users"></i>
+                            <span>Студенты</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="groups">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Группы</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="attendance">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Посещаемость</span>
+                        </a>
+                        
+                        <div class="nav-section-title" style="margin-top: 16px;">Редакторы</div>
+                        <a href="#" class="nav-link" data-page="schedule-editor">
+                            <i class="fas fa-edit"></i>
+                            <span>Расписание</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="events-editor">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>События</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="shop-editor">
+                            <i class="fas fa-box"></i>
+                            <span>Магазин</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="promo-editor">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>Промокоды</span>
+                        </a>
+                        
+                        <div class="nav-section-title" style="margin-top: 16px;">Аналитика</div>
+                        <a href="#" class="nav-link" data-page="rating-admin">
+                            <i class="fas fa-trophy"></i>
+                            <span>Рейтинг</span>
+                        </a>
+                        
+                        <div class="nav-section-title" style="margin-top: 16px;">Общение</div>
+                        <a href="#" class="nav-link" data-page="chat-admin">
+                            <i class="fas fa-reply-all"></i>
+                            <span>Заявки</span>
+                        </a>
+                        <a href="#" class="nav-link" data-page="common-chat-admin">
+                            <i class="fas fa-globe"></i>
+                            <span>Общий чат</span>
+                        </a>
+                    </div>
+                </nav>
+                
+                <div class="sidebar-footer-new">
+                    <div class="balance-card">
+                        <i class="fas fa-gem"></i>
+                        <div class="balance-info">
+                            <span class="balance-label">Баланс</span>
+                            <span class="balance-value" id="sidebarBalance">0</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="content-area">
+                <!-- ========== СТУДЕНЧЕСКИЕ СТРАНИЦЫ ========== -->
+                
+                <!-- Расписание -->
+                <div id="schedulePage" class="page active">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-calendar-week"></i> Расписание</h1>
+                        <div class="week-selector">
+                            <button class="day-btn active" data-day="0">ПН</button>
+                            <button class="day-btn" data-day="1">ВТ</button>
+                            <button class="day-btn" data-day="2">СР</button>
+                            <button class="day-btn" data-day="3">ЧТ</button>
+                            <button class="day-btn" data-day="4">ПТ</button>
+                            <button class="day-btn" data-day="5">СБ</button>
+                        </div>
+                    </div>
+                    <div class="stats-cards">
+                        <div class="stat-card-new">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="stat-label">Посещено пар</span>
+                                <span class="stat-number" id="attendanceStat">0/0</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-new">
+                            <i class="fas fa-gem"></i>
+                            <div>
+                                <span class="stat-label">Заработано</span>
+                                <span class="stat-number" id="todayEarnedStat">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="scheduleList" class="schedule-grid-new"></div>
+                </div>
+
+                <!-- События -->
+                <div id="eventsPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-calendar-alt"></i> События</h1>
+                    </div>
+                    <div id="eventsList" class="events-grid-new"></div>
+                </div>
+
+                <!-- Магазин -->
+                <div id="shopPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-store"></i> Магазин</h1>
+                    </div>
+                    <div id="shopList" class="shop-grid-new"></div>
+                </div>
+
+                <!-- Промокоды -->
+                <div id="promoPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-ticket-alt"></i> Промокоды</h1>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-input-group">
+                            <input type="text" id="bonusCodeInput" placeholder="Введите промокод" maxlength="20">
+                            <button id="submitBonusCodeBtn">Активировать</button>
+                        </div>
+                        <div class="promo-list">
+                            <h3>Активированные промокоды</h3>
+                            <div id="usedPromoCodes"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- История -->
+                <div id="historyPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-history"></i> История</h1>
+                        <button id="clearHistoryBtn" class="btn-clear">Очистить</button>
+                    </div>
+                    <div id="historyList" class="history-list-new"></div>
+                </div>
+
+                <!-- Рейтинг студента -->
+                <div id="leaderboardPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-trophy"></i> Рейтинг</h1>
+                    </div>
+                    <div id="leaderboardContainer"></div>
+                </div>
+
+                <!-- ПОДДЕРЖКА - УЛУЧШЕННЫЙ ИНТЕРФЕЙС ДЛЯ СТУДЕНТА -->
+                <div id="chatPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-headset"></i> Поддержка</h1>
+                    </div>
+                    
+                    <div class="student-support-container">
+                        <!-- Форма создания заявки -->
+                        <div class="create-ticket-card">
+                            <div class="create-ticket-header">
+                                <i class="fas fa-pen-alt"></i>
+                                <span>Создать обращение</span>
+                                <label class="anonymous-switch">
+                                    <input type="checkbox" id="anonymousToggle">
+                                    <span class="anonymous-slider"></span>
+                                    <span class="anonymous-text">
+                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-user-secret"></i>
+                                    </span>
+                                </label>
+                            </div>
+                            <textarea id="messageInput" placeholder="Опишите вашу проблему или задайте вопрос..." maxlength="500"></textarea>
+                            <button id="sendMessageBtn" class="send-ticket-btn">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </div>
+
+                        <!-- Список заявок -->
+                        <div class="tickets-list">
+                            <div class="tickets-header">
+                                <span><i class="fas fa-list"></i> Мои обращения</span>
+                                <div class="tickets-stats">
+                                    <span class="stat-badge" id="totalTickets">0</span>
+                                    <span class="stat-badge pending-badge" id="pendingTickets">0</span>
+                                    <span class="stat-badge answered-badge" id="answeredTickets">0</span>
+                                </div>
+                            </div>
+                            <div id="messagesArea" class="tickets-container">
+                                <div class="empty-tickets">
+                                    <i class="fas fa-comments"></i>
+                                    <p>Нет обращений</p>
+                                    <span>Создайте обращение, и мы ответим вам в ближайшее время</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Общий чат (студент) -->
+                <div id="common-chatPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-globe"></i> Общий чат</h1>
+                    </div>
+                    <div class="common-chat-container">
+                        <div class="common-messages-area" id="commonMessagesArea">
+                            <div class="empty-chat">
+                                <i class="fas fa-comments"></i>
+                                <p>Нет сообщений</p>
+                                <span>Будьте первым, кто напишет в общий чат!</span>
+                            </div>
+                        </div>
+                        <div class="common-message-input">
+                            <textarea id="commonMessageInput" placeholder="Введите сообщение..." rows="1" maxlength="500"></textarea>
+                            <button id="sendCommonMessageBtn" class="send-btn">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== АДМИНСКИЕ СТРАНИЦЫ ========== -->
+                
+                <!-- Управление студентами -->
+                <div id="studentsPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-users"></i> Студенты</h1>
+                        <button class="btn-add" id="showAddStudentModal"><i class="fas fa-plus"></i> Добавить</button>
+                    </div>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="studentsSearchInput" placeholder="Поиск...">
+                        <select id="studentsGroupFilter">
+                            <option value="Все группы">Все группы</option>
+                        </select>
+                    </div>
+                    <div id="studentsList" class="students-list-new"></div>
+                </div>
+
+                <!-- Модалка добавления студента -->
+                <div id="addStudentModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-user-plus"></i> Добавить студента</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="newStudentName" placeholder="Имя студента" maxlength="50">
+                            <input type="text" id="newStudentLogin" placeholder="Логин" maxlength="30">
+                            <input type="password" id="newStudentPassword" placeholder="Пароль" maxlength="30">
+                            <select id="newStudentGroup"></select>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-cancel">Отмена</button>
+                            <button class="btn-primary" id="adminAddStudentBtn">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Группы -->
+                <div id="groupsPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-layer-group"></i> Группы</h1>
+                        <button class="btn-add" id="showAddGroupModal"><i class="fas fa-plus"></i> Создать</button>
+                    </div>
+                    <div id="groupsList" class="groups-list-new"></div>
+                </div>
+
+                <!-- Модалка добавления группы -->
+                <div id="addGroupModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-layer-group"></i> Создать группу</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="newGroupName" placeholder="Название группы" maxlength="30">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-cancel">Отмена</button>
+                            <button class="btn-primary" id="adminAddGroupBtn">Создать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Посещаемость -->
+                <div id="attendancePage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-calendar-check"></i> Посещаемость</h1>
+                    </div>
+                    <div class="attendance-panel">
+                        <select id="attendanceGroupSelect"></select>
+                        <select id="attendanceDaySelect"></select>
+                        <button id="loadGroupScheduleBtn">Загрузить</button>
+                    </div>
+                    <div id="groupAttendanceEditor"></div>
+                </div>
+
+                <!-- Редактор расписания -->
+                <div id="schedule-editorPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-edit"></i> Расписание</h1>
+                    </div>
+                    <div id="groupCardsContainer" class="group-cards-new"></div>
+                    <div id="scheduleEditorCard" class="editor-panel" style="display: none;">
+                        <div class="editor-header">
+                            <h3>Редактирование: <span id="selectedGroupName"></span></h3>
+                            <button id="changeGroupBtn" class="btn-secondary">Выбрать группу</button>
+                        </div>
+                        <div class="day-tabs">
+                            <button class="day-tab active" data-day="0">ПН</button>
+                            <button class="day-tab" data-day="1">ВТ</button>
+                            <button class="day-tab" data-day="2">СР</button>
+                            <button class="day-tab" data-day="3">ЧТ</button>
+                            <button class="day-tab" data-day="4">ПТ</button>
+                            <button class="day-tab" data-day="5">СБ</button>
+                        </div>
+                        <div class="add-pair-panel">
+                            <h4>Добавить пару</h4>
+                            <div class="pair-form">
+                                <input type="text" id="editPairTime" placeholder="Время" maxlength="20">
+                                <input type="text" id="editPairName" placeholder="Название" maxlength="100">
+                                <input type="text" id="editPairTeacher" placeholder="Преподаватель" maxlength="50">
+                                <input type="text" id="editPairRoom" placeholder="Аудитория" maxlength="20">
+                                <input type="number" id="editPairReward" placeholder="Алмазы" min="0">
+                                <button id="adminAddPairBtn">Добавить</button>
+                            </div>
+                        </div>
+                        <div id="adminPairsList" class="pairs-list-new"></div>
+                    </div>
+                </div>
+
+                <!-- Редактор событий -->
+                <div id="events-editorPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-calendar-plus"></i> События</h1>
+                        <button class="btn-add" id="showAddEventModal"><i class="fas fa-plus"></i> Добавить</button>
+                    </div>
+                    <div id="adminEventsList" class="events-admin-list-new"></div>
+                </div>
+
+                <!-- Модалка добавления события -->
+                <div id="addEventModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-calendar-plus"></i> Добавить событие</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="newEventTitle" placeholder="Название" maxlength="100">
+                            <input type="date" id="newEventDate">
+                            <input type="time" id="newEventTime">
+                            <input type="text" id="newEventLocation" placeholder="Место" maxlength="100">
+                            <textarea id="newEventDescription" placeholder="Описание" rows="3" maxlength="500"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-cancel">Отмена</button>
+                            <button class="btn-primary" id="adminAddEventBtn">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Редактор магазина -->
+                <div id="shop-editorPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-box"></i> Товары</h1>
+                        <button class="btn-add" id="showAddItemModal"><i class="fas fa-plus"></i> Добавить</button>
+                    </div>
+                    <div id="adminShopItemsList" class="items-list-new"></div>
+                </div>
+
+                <!-- Модалка добавления товара -->
+                <div id="addItemModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-box"></i> Добавить товар</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="newItemName" placeholder="Название" maxlength="50">
+                            <input type="text" id="newItemEmoji" placeholder="Эмодзи" maxlength="2">
+                            <input type="number" id="newItemPrice" placeholder="Цена" min="0">
+                            <input type="number" id="newItemStock" placeholder="Количество" min="0">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-cancel">Отмена</button>
+                            <button class="btn-primary" id="adminAddItemBtn">Добавить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Редактор промокодов -->
+                <div id="promo-editorPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-ticket-alt"></i> Промокоды</h1>
+                        <button class="btn-add" id="showAddPromoModal"><i class="fas fa-plus"></i> Создать</button>
+                    </div>
+                    <div id="adminBonusList" class="promos-list-new"></div>
+                </div>
+
+                <!-- Модалка добавления промокода -->
+                <div id="addPromoModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-ticket-alt"></i> Создать промокод</h3>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="newBonusCode" placeholder="Код промокода" maxlength="20">
+                            <input type="number" id="newBonusReward" placeholder="Кристаллы" min="0">
+                            <input type="number" id="newBonusExp" placeholder="Опыт" min="0">
+                            <input type="number" id="newBonusUses" placeholder="Кол-во использований" min="1">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-cancel">Отмена</button>
+                            <button class="btn-primary" id="adminAddBonusBtn">Создать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Рейтинг админа -->
+                <div id="rating-adminPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-trophy"></i> Рейтинг студентов</h1>
+                    </div>
+                    <div id="leaderboardAdminContainer"></div>
+                </div>
+
+                <!-- ЗАЯВКИ ДЛЯ АДМИНИСТРАТОРА - УПРОЩЁННЫЙ ИНТЕРФЕЙС -->
+                <div id="chat-adminPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-reply-all"></i> Заявки в поддержку</h1>
+                        <div class="admin-ticket-stats">
+                            <span class="stat-chip" id="adminPendingCount">0</span>
+                            <span class="stat-chip answered-chip" id="adminAnsweredCount">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-tickets-container">
+                        <!-- Переключатель статусов -->
+                        <div class="ticket-status-switch">
+                            <button class="status-btn active" data-filter="pending">
+                                <i class="fas fa-clock"></i> Ожидают ответа
+                                <span class="status-count" id="pendingCountBadge">0</span>
+                            </button>
+                            <button class="status-btn" data-filter="answered">
+                                <i class="fas fa-check-circle"></i> С ответом
+                                <span class="status-count answered-count" id="answeredCountBadge">0</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Список заявок -->
+                        <div id="adminMessagesList" class="admin-tickets-list"></div>
+                    </div>
+                </div>
+
+                <!-- Общий чат для администратора -->
+                <div id="common-chat-adminPage" class="page">
+                    <div class="page-header-new">
+                        <h1><i class="fas fa-globe"></i> Общий чат</h1>
+                        <button id="adminClearCommonChatBtn" class="btn-small" style="background: var(--danger);">
+                            <i class="fas fa-trash"></i> Очистить чат
+                        </button>
+                    </div>
+                    <div class="admin-common-chat-container">
+                        <div class="admin-common-messages-area" id="adminCommonMessagesArea">
+                            <div class="empty-chat">
+                                <i class="fas fa-comments"></i>
+                                <p>Нет сообщений</p>
+                                <span>Сообщения студентов будут появляться здесь</span>
+                            </div>
+                        </div>
+                        <div class="admin-common-message-input">
+                            <textarea id="adminCommonMessageInput" placeholder="Написать в общий чат..." rows="1" maxlength="500"></textarea>
+                            <button id="sendAdminCommonMessageBtn" class="send-btn">
+                                <i class="fas fa-paper-plane"></i> Отправить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
