@@ -1,0 +1,169 @@
+/* assets/css/sidebar.css — Discord-подобное боковое меню */
+
+.discord-sidebar {
+    width: 56px;
+    min-width: 56px;
+    height: 100vh;
+    background: rgba(12, 12, 30, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-shrink: 0;
+    z-index: 50;
+    border-right: 1px solid var(--glass-border);
+    position: relative;
+}
+
+.discord-sidebar::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.discord-sidebar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--primary), var(--secondary), var(--accent), var(--primary), transparent);
+    background-size: 100% 300%;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.discord-menu-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 4px 0;
+}
+
+.group-divider {
+    width: 24px;
+    height: 1.5px;
+    background: var(--glass-border);
+    margin: 6px 0;
+    border-radius: 2px;
+}
+
+.discord-menu-item {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease;
+    position: relative;
+    margin-bottom: 2px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+.discord-menu-item i {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.discord-menu-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    border-radius: 0 3px 3px 0;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    transition: height 0.1s ease;
+}
+
+.discord-menu-item.active::before {
+    height: 18px;
+}
+
+.discord-menu-item.active {
+    color: var(--text-primary);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.discord-menu-item .item-tooltip {
+    display: none;
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+    pointer-events: none;
+    border: 1px solid var(--glass-border);
+    letter-spacing: 0.3px;
+}
+
+.discord-menu-item .item-tooltip::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid var(--glass-bg);
+}
+
+.discord-menu-item .item-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--danger);
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 700;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--bg-dark);
+}
+
+.discord-menu-item .item-badge.hidden {
+    display: none;
+}
+
+.discord-menu-item:hover {
+    color: var(--text-primary);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.discord-menu-item:hover .item-tooltip {
+    display: block;
+}

@@ -1,0 +1,772 @@
+/* assets/css/modals.css — модалки, уведомления, просмотр изображений, бейджи */
+
+/* ============================================================
+   МОДАЛЬНЫЕ ОКНА
+   ============================================================ */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 26, 0.92);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(36px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    width: 90%;
+    max-width: 520px;
+    box-shadow: var(--shadow-xl), var(--shadow-glow-strong);
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 26px;
+    border-bottom: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+.modal-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-light);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 26px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.1s ease;
+    font-family: var(--font);
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.modal-body {
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    max-height: 60vh;
+    flex: 1;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    padding: 14px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 14px;
+    width: 100%;
+    font-family: var(--font);
+    transition: all 0.1s ease;
+}
+
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 5px var(--primary-glow);
+}
+
+.modal-body textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal-body label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 22px 26px;
+    border-top: 1px solid var(--glass-border);
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   МОДАЛКА УВЕДОМЛЕНИЙ
+   ============================================================ */
+.notifications-modal {
+    position: fixed;
+    top: 72px;
+    right: 24px;
+    width: 420px;
+    max-width: calc(100vw - 40px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(36px);
+    -webkit-backdrop-filter: blur(36px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    z-index: 1000;
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
+.notifications-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--glass-border);
+    flex-shrink: 0;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.notifications-header h3 {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.notifications-header h3 i {
+    color: var(--primary-light);
+    font-size: 16px;
+}
+
+.notifications-header h3 > span {
+    /* Бейдж с количеством непрочитанных в заголовке */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--danger);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 4px;
+}
+
+.notifications-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ============================================================
+   КНОПКИ В МОДАЛКЕ УВЕДОМЛЕНИЙ
+   ============================================================ */
+
+/* Общие стили для всех кнопок в модалке */
+.mark-all-read,
+.clear-read-btn,
+.clear-all-btn {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.1s ease;
+    white-space: nowrap;
+    font-family: var(--font);
+    line-height: 1.4;
+    height: auto;
+    min-height: 28px;
+    text-decoration: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.mark-all-read:hover,
+.clear-read-btn:hover,
+.clear-all-btn:hover {
+    transform: translateY(-1px);
+}
+
+.mark-all-read:active,
+.clear-read-btn:active,
+.clear-all-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.mark-all-read:disabled,
+.clear-read-btn:disabled,
+.clear-all-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.mark-all-read i,
+.clear-read-btn i,
+.clear-all-btn i {
+    font-size: 10px;
+    flex-shrink: 0;
+}
+
+/* Кнопка "Все прочитаны" — зелёная при hover */
+.mark-all-read {
+    background: var(--success-dim);
+    border-color: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+.mark-all-read:hover {
+    background: var(--success);
+    border-color: var(--success);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Кнопка "Очистить прочитанные" — жёлтая при hover */
+.clear-read-btn {
+    background: var(--warning-dim);
+    border-color: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+}
+
+.clear-read-btn:hover {
+    background: var(--warning);
+    border-color: var(--warning);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* Кнопка "Очистить все" — красная при hover */
+.clear-all-btn {
+    background: var(--danger-dim);
+    border-color: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+}
+
+.clear-all-btn:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* ============================================================
+   СПИСОК УВЕДОМЛЕНИЙ
+   ============================================================ */
+.notifications-list {
+    max-height: 480px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.notifications-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.notifications-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.notifications-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.1s ease;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.notification-item.unread {
+    background: rgba(124, 58, 237, 0.06);
+    border-left: 3px solid var(--primary);
+    padding-left: 17px;
+}
+
+.notification-item.unread:hover {
+    background: rgba(124, 58, 237, 0.1);
+}
+
+.notification-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    color: var(--text-primary);
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.notification-message {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    word-wrap: break-word;
+    margin-bottom: 2px;
+}
+
+.notification-time {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    opacity: 0.7;
+}
+
+.notification-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.notification-item:hover .notification-actions {
+    opacity: 1;
+}
+
+.notification-item.unread .notification-actions {
+    opacity: 1;
+}
+
+.notification-mark-read,
+.notification-delete {
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: var(--text-muted);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all 0.1s ease;
+    flex-shrink: 0;
+    padding: 0;
+    font-family: var(--font);
+}
+
+.notification-mark-read:hover {
+    background: var(--success);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.notification-delete:hover {
+    background: var(--danger);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   ПУСТОЕ СОСТОЯНИЕ / ФУТЕР УВЕДОМЛЕНИЙ
+   ============================================================ */
+.notifications-empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+}
+
+.notifications-empty i {
+    font-size: 44px;
+    opacity: 0.15;
+    margin-bottom: 12px;
+    display: block;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.notifications-empty p {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.notifications-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.notifications-footer .clear-all-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 12px;
+    min-height: 36px;
+}
+
+/* ============================================================
+   АДАПТИВ — МОБИЛЬНАЯ ВЕРСИЯ
+   ============================================================ */
+@media (max-width: 600px) {
+    .notifications-modal {
+        top: 60px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - 80px);
+    }
+
+    .notifications-header {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .notifications-header h3 {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .notifications-actions {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .mark-all-read,
+    .clear-read-btn,
+    .clear-all-btn {
+        padding: 5px 12px;
+        font-size: 10px;
+        min-height: 26px;
+    }
+
+    .notification-item {
+        padding: 12px 16px;
+        gap: 10px;
+    }
+
+    .notification-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 15px;
+    }
+
+    .notification-title {
+        font-size: 12px;
+    }
+
+    .notification-message {
+        font-size: 11px;
+    }
+
+    .notifications-list {
+        max-height: 60vh;
+    }
+}
+
+/* ============================================================
+   ПРОСМОТР ИЗОБРАЖЕНИЙ
+   ============================================================ */
+.message-image-container {
+    max-width: 260px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.message-image {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+}
+
+.message-image-error {
+    padding: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.message-image-error i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+}
+
+.image-viewer-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer-modal.active {
+    display: flex;
+}
+
+.image-viewer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
+}
+
+.image-viewer-content {
+    position: relative;
+    max-width: 92vw;
+    max-height: 92vh;
+    z-index: 30001;
+}
+
+.image-viewer-content img {
+    max-width: 100%;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    display: block;
+}
+
+.image-viewer-close {
+    position: absolute;
+    top: -56px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+    font-family: var(--font);
+    padding: 0;
+}
+
+.image-viewer-close:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   БЕЙДЖИ И ТЕГИ (глобальные)
+   ============================================================ */
+.chat-title-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: 9px;
+    font-weight: 700;
+    margin-left: 4px;
+    border: 1px solid currentColor;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+.admin-badge-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+    color: #ffffff;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 9px;
+    margin-left: 4px;
+    font-weight: 700;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+.founder-badge {
+    background: linear-gradient(135deg, var(--gold), #f59e0b);
+    color: #1a0a2e;
+    padding: 2px 12px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.admin-badge {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    padding: 2px 12px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.current-user-badge {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--primary-light);
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: 9px;
+    margin-left: 4px;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.member-creator-badge {
+    background: var(--gold);
+    color: #1a0a2e;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    font-size: 8px;
+    margin-left: 4px;
+    font-weight: 700;
+    display: inline-block;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   СВЕТЛАЯ ТЕМА — корректировки
+   ============================================================ */
+body.light-theme .notifications-modal {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(124, 58, 237, 0.15);
+    box-shadow: 0 16px 80px rgba(0, 0, 0, 0.15), 0 0 40px rgba(124, 58, 237, 0.1);
+}
+
+body.light-theme .notifications-header {
+    border-bottom-color: rgba(124, 58, 237, 0.1);
+}
+
+body.light-theme .notification-item {
+    border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .notification-item:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .notification-item.unread {
+    background: rgba(124, 58, 237, 0.06);
+}
+
+body.light-theme .notification-title {
+    color: var(--text-primary);
+}
+
+body.light-theme .mark-all-read,
+body.light-theme .clear-read-btn,
+body.light-theme .clear-all-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .notification-mark-read,
+body.light-theme .notification-delete {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .notifications-overlay {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .image-viewer-overlay {
+    background: rgba(0, 0, 0, 0.9);
+}

@@ -1,0 +1,303 @@
+/* assets/css/auth.css — авторизация и экран блокировки */
+
+/* ============================================================
+   АВТОРИЗАЦИЯ
+   ============================================================ */
+.auth-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-overlay);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.auth-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.auth-card-new {
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--shadow-xl), var(--shadow-glow-strong);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card-new::before {
+    display: none;
+}
+
+.auth-logo-new {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.auth-logo-icon-new {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 12px;
+    display: block;
+}
+
+.auth-logo-icon-new svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 20px var(--primary-glow));
+    overflow: visible;
+}
+
+.auth-title-new {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 20%, var(--primary-light) 50%, var(--secondary) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+.auth-tabs-new {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 3px;
+    border-radius: var(--radius-full);
+    margin: 20px 0 16px;
+    border: 1px solid var(--glass-border);
+}
+
+.auth-tab-new {
+    flex: 1;
+    padding: 10px 14px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 11px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+}
+
+.auth-tab-new i {
+    font-size: 13px;
+}
+
+.auth-tab-new:hover {
+    color: var(--text-secondary);
+}
+
+.auth-tab-new.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #ffffff;
+    box-shadow: 0 2px 20px var(--primary-glow);
+}
+
+.auth-input-group-new {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0 14px;
+    margin-bottom: 12px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    position: relative;
+}
+
+.auth-input-group-new:focus-within {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.auth-input-group-new i {
+    color: var(--text-muted);
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.auth-input-group-new:focus-within i {
+    color: var(--primary-light);
+}
+
+.auth-input-group-new input {
+    width: 100%;
+    padding: 14px 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    letter-spacing: 0.3px;
+}
+
+.auth-input-group-new input::placeholder {
+    color: var(--text-dim);
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    padding: 6px;
+    font-size: 15px;
+    transition: color 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.password-toggle-btn:hover {
+    color: var(--primary-light);
+}
+
+.auth-btn-login-new {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: var(--radius-full);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+    margin-top: 16px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 30px var(--primary-glow);
+}
+
+.auth-btn-login-new:hover {
+    opacity: 0.9;
+}
+
+.auth-btn-login-new:active {
+    transform: scale(0.97);
+}
+
+.auth-btn-login-new:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-footer-new {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-muted);
+    opacity: 0.4;
+    letter-spacing: 0.5px;
+}
+
+/* Светлая тема */
+body.light-theme .auth-overlay {
+    background: rgba(240, 237, 248, 0.92);
+}
+
+body.light-theme .auth-card-new {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================================
+   ЭКРАН БЛОКИРОВКИ
+   ============================================================ */
+.lockdown-screen {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    background: var(--bg-deep);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+}
+
+.lockdown-screen.active {
+    display: flex;
+}
+
+.lockdown-container {
+    text-align: center;
+    padding: 50px;
+    max-width: 480px;
+}
+
+.lockdown-icon {
+    font-size: 90px;
+    color: var(--danger);
+    margin-bottom: 24px;
+    display: block;
+}
+
+.lockdown-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--danger), var(--danger-bright));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+.lockdown-message {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    padding: 28px 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.lockdown-logout-btn {
+    margin-top: 36px;
+    padding: 16px 50px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-full);
+    color: var(--danger);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.08s ease;
+    letter-spacing: 1px;
+}
+
+.lockdown-logout-btn:hover {
+    background: var(--danger);
+    color: #ffffff;
+    box-shadow: 0 0 50px rgba(239, 68, 68, 0.4);
+}

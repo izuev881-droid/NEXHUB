@@ -1,0 +1,220 @@
+/* assets/css/variables.css — переменные, темы, сезонные палитры */
+
+:root {
+    /* Основные цвета */
+    --primary: #7c3aed;
+    --primary-dark: #5b21b6;
+    --primary-light: #a78bfa;
+    --primary-glow: rgba(124, 58, 237, 0.5);
+    --primary-glow-strong: rgba(124, 58, 237, 0.75);
+    --secondary: #ec4899;
+    --secondary-glow: rgba(236, 72, 153, 0.4);
+    --accent: #06b6d4;
+    --accent-glow: rgba(6, 182, 212, 0.4);
+
+    /* Фоновые цвета */
+    --bg-deep: #0a0a1a;
+    --bg-dark: #0f0f2a;
+    --bg-card: #141430;
+    --bg-card-hover: #1a1a3e;
+    --bg-input: #0a0a20;
+    --bg-overlay: rgba(10, 10, 26, 0.92);
+
+    /* Glass-эффекты */
+    --glass-bg: rgba(20, 20, 48, 0.92);
+    --glass-border: rgba(124, 58, 237, 0.25);
+    --glass-light: rgba(255, 255, 255, 0.04);
+    --glass-dark: rgba(0, 0, 0, 0.3);
+
+    /* Текст */
+    --text-primary: #f0f0ff;
+    --text-secondary: #c8c0f0;
+    --text-muted: #8888b8;
+    --text-dim: #555580;
+
+    /* Статусы */
+    --success: #10b981;
+    --success-dim: rgba(16, 185, 129, 0.12);
+    --success-bright: #34d399;
+    --danger: #ef4444;
+    --danger-dim: rgba(239, 68, 68, 0.12);
+    --danger-bright: #f87171;
+    --warning: #f59e0b;
+    --warning-dim: rgba(245, 158, 11, 0.12);
+    --warning-bright: #fbbf24;
+    --info: #3b82f6;
+    --info-dim: rgba(59, 130, 246, 0.12);
+    --info-bright: #60a5fa;
+
+    /* Медали */
+    --gold: #fbbf24;
+    --silver: #9ca3af;
+    --bronze: #d97706;
+
+    /* Границы */
+    --border-color: rgba(124, 58, 237, 0.15);
+    --border-light: rgba(124, 58, 237, 0.06);
+    --border-active: rgba(124, 58, 237, 0.4);
+
+    /* Тени */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 25px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 50px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 16px 80px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.25);
+    --shadow-glow-strong: 0 0 60px rgba(124, 58, 237, 0.45);
+    --shadow-glow-primary: 0 0 30px rgba(124, 58, 237, 0.3);
+
+    /* Скругления */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 26px;
+    --radius-2xl: 34px;
+    --radius-full: 9999px;
+
+    /* Переходы */
+    --transition-fast: 0.08s ease;
+    --transition-normal: 0.12s ease;
+    --transition-slow: 0.15s ease;
+
+    /* Шрифты */
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* Сезон */
+    --season: 'default';
+}
+
+/* ============================================================
+   СЕЗОННЫЕ ТЕМЫ
+   ============================================================ */
+body.season-winter {
+    --primary: #4f8cf7;
+    --primary-dark: #2563eb;
+    --primary-light: #93bbfc;
+    --primary-glow: rgba(79, 140, 247, 0.5);
+    --primary-glow-strong: rgba(79, 140, 247, 0.75);
+    --secondary: #60a5fa;
+    --secondary-glow: rgba(96, 165, 250, 0.4);
+    --accent: #7dd3fc;
+    --accent-glow: rgba(125, 211, 252, 0.4);
+    --bg-deep: #0a0e1a;
+    --bg-dark: #0f1a2e;
+    --bg-card: #14203a;
+    --bg-card-hover: #1a2a4a;
+    --glass-bg: rgba(20, 32, 58, 0.92);
+    --glass-border: rgba(79, 140, 247, 0.25);
+    --text-primary: #f0f4ff;
+    --text-secondary: #c8d8f0;
+    --text-muted: #8899bb;
+    --text-dim: #556688;
+    --border-color: rgba(79, 140, 247, 0.15);
+    --shadow-glow: 0 0 40px rgba(79, 140, 247, 0.25);
+    --shadow-glow-strong: 0 0 60px rgba(79, 140, 247, 0.45);
+    --season: 'winter';
+}
+
+body.season-spring {
+    --primary: #22c55e;
+    --primary-dark: #16a34a;
+    --primary-light: #86efac;
+    --primary-glow: rgba(34, 197, 94, 0.5);
+    --primary-glow-strong: rgba(34, 197, 94, 0.75);
+    --secondary: #f472b6;
+    --secondary-glow: rgba(244, 114, 182, 0.4);
+    --accent: #fbbf24;
+    --accent-glow: rgba(251, 191, 36, 0.4);
+    --bg-deep: #0a1a0a;
+    --bg-dark: #0f2a12;
+    --bg-card: #143a18;
+    --bg-card-hover: #1a4a20;
+    --glass-bg: rgba(20, 58, 24, 0.92);
+    --glass-border: rgba(34, 197, 94, 0.25);
+    --text-primary: #f0fff0;
+    --text-secondary: #c8f0c8;
+    --text-muted: #88bb88;
+    --text-dim: #558855;
+    --border-color: rgba(34, 197, 94, 0.15);
+    --shadow-glow: 0 0 40px rgba(34, 197, 94, 0.25);
+    --shadow-glow-strong: 0 0 60px rgba(34, 197, 94, 0.45);
+    --season: 'spring';
+}
+
+body.season-summer {
+    --primary: #f59e0b;
+    --primary-dark: #d97706;
+    --primary-light: #fcd34d;
+    --primary-glow: rgba(245, 158, 11, 0.5);
+    --primary-glow-strong: rgba(245, 158, 11, 0.75);
+    --secondary: #ef4444;
+    --secondary-glow: rgba(239, 68, 68, 0.4);
+    --accent: #fb923c;
+    --accent-glow: rgba(251, 146, 60, 0.4);
+    --bg-deep: #1a0f0a;
+    --bg-dark: #2a1a0f;
+    --bg-card: #3a2214;
+    --bg-card-hover: #4a2a1a;
+    --glass-bg: rgba(58, 34, 20, 0.92);
+    --glass-border: rgba(245, 158, 11, 0.25);
+    --text-primary: #fff8f0;
+    --text-secondary: #f0e8c8;
+    --text-muted: #bbaa88;
+    --text-dim: #887755;
+    --border-color: rgba(245, 158, 11, 0.15);
+    --shadow-glow: 0 0 40px rgba(245, 158, 11, 0.25);
+    --shadow-glow-strong: 0 0 60px rgba(245, 158, 11, 0.45);
+    --season: 'summer';
+}
+
+body.season-autumn {
+    --primary: #d97706;
+    --primary-dark: #b45309;
+    --primary-light: #fbbf24;
+    --primary-glow: rgba(217, 119, 6, 0.5);
+    --primary-glow-strong: rgba(217, 119, 6, 0.75);
+    --secondary: #dc2626;
+    --secondary-glow: rgba(220, 38, 38, 0.4);
+    --accent: #f97316;
+    --accent-glow: rgba(249, 115, 22, 0.4);
+    --bg-deep: #1a0f0a;
+    --bg-dark: #2a1a0f;
+    --bg-card: #3a2214;
+    --bg-card-hover: #4a2a1a;
+    --glass-bg: rgba(58, 34, 20, 0.92);
+    --glass-border: rgba(217, 119, 6, 0.25);
+    --text-primary: #fff8f0;
+    --text-secondary: #f0e8c8;
+    --text-muted: #bbaa88;
+    --text-dim: #887755;
+    --border-color: rgba(217, 119, 6, 0.15);
+    --shadow-glow: 0 0 40px rgba(217, 119, 6, 0.25);
+    --shadow-glow-strong: 0 0 60px rgba(217, 119, 6, 0.45);
+    --season: 'autumn';
+}
+
+/* ============================================================
+   СВЕТЛАЯ ТЕМА
+   ============================================================ */
+body.light-theme {
+    --bg-deep: #f0edf8;
+    --bg-dark: #f5f0fa;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f5f0fa;
+    --bg-input: #f0edf5;
+    --bg-overlay: rgba(240, 237, 248, 0.92);
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-border: rgba(124, 58, 237, 0.15);
+    --glass-light: rgba(0, 0, 0, 0.03);
+    --glass-dark: rgba(0, 0, 0, 0.05);
+    --text-primary: #1a1a2e;
+    --text-secondary: #2a2a4a;
+    --text-muted: #6a6a8a;
+    --text-dim: #9a9aba;
+    --border-color: rgba(124, 58, 237, 0.12);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 50px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 16px 80px rgba(0, 0, 0, 0.15);
+}
